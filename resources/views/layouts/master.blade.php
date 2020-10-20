@@ -17,10 +17,7 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <router-link to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
-
-            <router-view></router-view>
+            <main-app/>
         </div>
         <script src="/js/app.js"></script>
     </body>

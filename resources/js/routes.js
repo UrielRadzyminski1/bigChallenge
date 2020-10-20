@@ -1,16 +1,26 @@
 import VueRouter from 'vue-router';
-import Menu from './views/Menu.vue';
+import Menu from './components/Menu/Menu.vue';
+import Categories from './components/Menu/Categories.vue';
 
 let routes = [
   {
     path: '/',
     component: Menu
+  },
+  {
+    path: '/categories',
+    component: Categories
+  },
+  {
+    path: '/categories/:id',
+    component: Category
   }
+  
 ];
 
 
-const router = new VueRouter({
+
+export default new VueRouter({
+  mode: 'history',
   routes
 });
-
-export default router;
