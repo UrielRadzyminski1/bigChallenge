@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Meal extends Model
+class Order extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Meal extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'meals';
+    protected $table = 'orders';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -34,17 +34,10 @@ class Meal extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
-    public function category()
+    public function meals()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsToMany('App\Models\Meal');
     }
-
-    public function orders()
-    {
-        return $this->belongsToMany('App\Models\Order');
-    }
-
     /*
     |--------------------------------------------------------------------------
     | SCOPES

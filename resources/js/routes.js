@@ -13,7 +13,7 @@ let routes = [
   },
   {
     path: '/categories/:id',
-    component: Category
+    component: Categories
   }
   
 ];

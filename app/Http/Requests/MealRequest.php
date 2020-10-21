@@ -26,7 +26,10 @@ class MealRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'name' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'price' => 'required|numeric|digits_between:1,19'
         ];
     }
 

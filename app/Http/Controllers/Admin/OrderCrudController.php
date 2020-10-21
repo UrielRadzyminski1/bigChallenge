@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\MealRequest;
+use App\Http\Requests\OrderRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class MealCrudController
+ * Class OrderCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class MealCrudController extends CrudController
+class OrderCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class MealCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Meal::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/meal');
-        CRUD::setEntityNameStrings('meal', 'meals');
+        CRUD::setModel(\App\Models\Order::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/order');
+        CRUD::setEntityNameStrings('order', 'orders');
     }
 
     /**
@@ -56,33 +56,26 @@ class MealCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(MealRequest::class);
+        CRUD::setValidation(OrderRequest::class);
 
-        /* CRUD::setFromDb(); // fields */
         CRUD::addFields([
-            [
-                'name' => 'name',
-                'type' => 'text',
-                'label' => 'Name'
-            ],
-            [
-                'name' => 'description',
-                'type' => 'text',
-                'label' => 'Descriptionn'
-            ],
-            [
-                'name' => 'category_id',
-                'type' => 'select2',
-                'label' => 'Category'
-            ],
             [
                 'name' => 'price',
                 'type' => 'number',
                 'label' => 'Price',
                 'attributes' => ["step" => "any"], // allow decimals
                 'prefix'     => "$"
-            ]
-
+            ],
+            [
+                'name' => 'delivered',
+                'type' => 'checkbox',
+                'label' => 'Delivered'
+            ],
+            [
+                'name' => 'paid',
+                'type' => 'checkbox',
+                'label' => 'Paid'
+            ],
         ]);
 
         /**

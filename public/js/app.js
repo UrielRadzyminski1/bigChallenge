@@ -1914,7 +1914,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      categories: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('api/categories').then(function (response) {
+      _this.categories = response.data.data;
+    });
+  }
+});
 
 /***/ }),
 
@@ -2423,6 +2441,8 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("h1", [_vm._v("Hola!")]),
+      _vm._v(" "),
       _c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")]),
       _vm._v(" "),
       _c("router-link", { attrs: { to: "/categories" } }, [
@@ -2456,7 +2476,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n  Categories!\n")])
+  return _c(
+    "div",
+    _vm._l(_vm.categories, function(category) {
+      return _c("div", { key: category.id, staticClass: "\n    flex" }, [
+        _c("h1", [_vm._v(_vm._s(category.name))]),
+        _vm._v(" "),
+        _c("img", {
+          attrs: {
+            src: "/storage/" + category.image,
+            alt: category.name,
+            width: "100",
+            height: "100"
+          }
+        })
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -17955,7 +17992,7 @@ var routes = [{
   component: _components_Menu_Categories_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/categories/:id',
-  component: Category
+  component: _components_Menu_Categories_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
@@ -17964,9 +18001,9 @@ var routes = [{
 
 /***/ }),
 
-/***/ "./resources/scss/app.scss":
+/***/ "./resources/sass/app.scss":
 /*!*********************************!*\
-  !*** ./resources/scss/app.scss ***!
+  !*** ./resources/sass/app.scss ***!
   \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -17977,13 +18014,13 @@ var routes = [{
 
 /***/ 0:
 /*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/scss/app.scss ***!
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
   \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\idel\Desktop\OTROSPROY\bigChallenge\bigChallenge\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\idel\Desktop\OTROSPROY\bigChallenge\bigChallenge\resources\scss\app.scss */"./resources/scss/app.scss");
+__webpack_require__(/*! /home/mauriciopisabarro/Desktop/entr/bigChallenge/bigChallenge/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mauriciopisabarro/Desktop/entr/bigChallenge/bigChallenge/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

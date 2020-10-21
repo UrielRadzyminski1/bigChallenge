@@ -58,8 +58,21 @@ class CategoryCrudController extends CrudController
     {
         CRUD::setValidation(CategoryRequest::class);
 
-        CRUD::setFromDb(); // fields
+        CRUD::addFields([
+            [
+                'label' => "Category Image",
+                'name' => "image",
+                'type' => 'image',
+                'crop' => true,
+                'aspect_ratio' => 1
+            ],
+            [
+                'label' => "Name",
+                'name' => "name",
+                'type' => 'text',
+            ]
 
+        ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
