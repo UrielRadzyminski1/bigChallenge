@@ -88,6 +88,24 @@ class CategoryCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        /* $this->setupCreateOperation(); */
+        CRUD::setValidation(CategoryRequest::class);
+
+        CRUD::addFields([
+            [
+                'label' => "Category Image",
+                'name' => "image",
+                'type' => 'image',
+                'crop' => true,
+                'aspect_ratio' => 1,
+                'disk' => 'public'
+            ],
+            [
+                'label' => "Name",
+                'name' => "name",
+                'type' => 'text',
+            ]
+
+        ]);
     }
 }

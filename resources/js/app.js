@@ -10,7 +10,7 @@ window.axios = axios;
 window.Vue = Vue;
 Vue.use(VueRouter);
 Vue.use(Vuex);
-
+import myStore from './store'
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -19,24 +19,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 import router from './routes';
 import MainApp from './components/MainApp.vue';
 
-const store = new Vuex.Store({
-  state: {
-    cart: {
+const store = new Vuex.Store(myStore)
 
-    },
 
-  },
-  mutations: {
-
-  },
-  getters: {
-
-  }
-})
 
 const app = new Vue({
-  
-  el:'#app',
+
+  el: '#app',
   store,
   components: {
     MainApp
