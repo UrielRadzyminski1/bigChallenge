@@ -10,16 +10,21 @@
         flex
         flex-col
         items-center
-        my-4" v-for="category in categories" 
+        my-4
+        text-center" v-for="category in categories" 
         v-bind:key="category.id">
           <router-link :to="'/categories/'+category.id">
-            <h3>{{category.name}}</h3>
             <img 
               class="
-                rounded-2xl"
+                rounded-2xl
+                border-solid
+                border-8
+                border-red-600
+                hover:border-red-800"
               :src="'/storage/'+category.image" 
               :alt="category.name + ' image'" 
               width="200" height="200" />
+              <h3>{{category.name}}</h3>
           </router-link>
       </div>
     </div>
@@ -28,7 +33,6 @@
 
 <script>
 export default {
-
   data() {
     return {
       categories : []

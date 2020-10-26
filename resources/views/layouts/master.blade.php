@@ -12,7 +12,8 @@
 
     </head>
     <body>
-        <div id="app">
+        <div id="app"
+            class="bg-orange-200 min-h-screen">
             <main-app/>
         </div>
         <script src="/js/app.js"></script>

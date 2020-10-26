@@ -1,7 +1,21 @@
 <template>
-  <div>
-    <cart-item v-for="item in cart" :key="item.id" :meal="item"></cart-item>
-<!--     <p v-for="item in cart">Hola!</p> -->
+  <div class="">
+      <div>
+        <cart-item v-for="item in cart" :key="item.id" :meal="item"></cart-item>
+      </div>
+      <div class="
+        w-full
+        h-24
+        fixed 
+        bottom-0
+        bg-red-500
+        flex
+        justify-between
+        items-center
+        px-24">
+        <p>Total: {{this.$store.getters.totalPrice}}</p>
+        <router-link to="/checkout">Checkout</router-link>
+      </div>
   </div>
 </template>
 <script>

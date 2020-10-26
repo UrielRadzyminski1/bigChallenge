@@ -7,17 +7,18 @@
           flex
           flex-col
           items-center">
+            <p class="mx-2">PRECIO {{tryout}}</p>
             <div class="flex w-20 justify-between">
                 <div>
                     <button @click="incAmount()">+1</button>
                 </div>
                 
                 <p class="mx-2">{{currentAmount}}</p>
-                <p class="mx-2">PREICO {{tryout}}</p>
                 <div class="w-3">
                     <button v-if="currentAmount>1" @click="decAmount()">-1</button>
                 </div>
             </div>
+
             <button @click="addToCart()">Add to cart</button>
         </div>
     </div>
@@ -45,7 +46,8 @@ export default {
                 'name':this.meal.name,
                 'amount':this.currentAmount,
                 'price':this.meal.price
-            })
+            });
+            alert("Item added :)")
         }
     },
     computed: {
