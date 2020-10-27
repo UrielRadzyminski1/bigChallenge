@@ -13,7 +13,7 @@
     </head>
     <body>
         <div id="app"
-            class="bg-orange-200 min-h-screen">
+            class="bg-red-100 min-h-screen flex flex-col">
             <main-app/>
         </div>
         <script src="/js/app.js"></script>

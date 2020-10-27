@@ -1,26 +1,63 @@
 <template>
-    <div class=""> 
-        <h4>{{this.meal.name}}</h4>
-        <p>{{this.meal.description}}{{tryout}}</p>
+    <div 
+    class="flex 
+    flex-col 
+    shadow-md
+    divide-y-2 divide-red-200"> 
+        <div class="
+        flex 
+        justify-between 
+        bg-red-600 
+        font-bold 
+        text-white
+        capitalize 
+        p-2">
+            <h4>{{this.meal.name}}</h4>
+            <h4>$ {{mealPrice}}</h4>
+        </div>
+        
+
+        <p class="p-4">{{this.meal.description}}</p>
+
         <div
           class="
           flex
-          flex-col
-          items-center">
-            <p class="mx-2">PRECIO {{tryout}}</p>
-            <div class="flex w-20 justify-between">
-                <div>
-                    <button @click="incAmount()">+1</button>
-                </div>
+          justify-evenly
+          py-4">
+            
+            <div class="
+            flex 
+            justify-between
+            rounded
+            shadow
+            font-semibold">
+                <p class="cartButton"
+                @click="incAmount()">
+                    +1
+                </p>
                 
-                <p class="mx-2">{{currentAmount}}</p>
-                <div class="w-3">
-                    <button v-if="currentAmount>1" @click="decAmount()">-1</button>
-                </div>
-            </div>
+                <p class="
+                py-2
+                pr-4
+                pl-3">{{currentAmount}}</p>
 
-            <button @click="addToCart()">Add to cart</button>
+                <p class="cartButton"
+                @click="decAmount()">
+                    -1
+                </p>
+            </div>
+            <p class="addToCartButton"
+            @click="addToCart()">Add to cart ${{totalPrice}}
+            </p>     
         </div>
+
+        
+
+
+
+
+
+
     </div>
 </template>
 <script>
@@ -38,7 +75,9 @@ export default {
             this.currentAmount +=1;
         },
         decAmount(){
-            this.currentAmount -=1;
+            if (this.currentAmount>1) {
+                this.currentAmount -=1;
+            }
         },
         addToCart(){
             this.$store.commit('addItem', {
@@ -51,9 +90,13 @@ export default {
         }
     },
     computed: {
-        tryout () {
+        mealPrice () {
         return this.meal.price;
+        },
+        totalPrice () {
+        return this.meal.price*this.currentAmount;
         }
+
     }
 }
 

@@ -28,11 +28,16 @@
           </router-link>
       </div>
     </div>
+    <tocart-footer></tocart-footer>
   </div>
 </template>
 
 <script>
+import TocartFooter from '../Auxiliary/TocartFooter.vue'
 export default {
+  components:{
+    'tocart-footer':TocartFooter
+  },
   data() {
     return {
       categories : []

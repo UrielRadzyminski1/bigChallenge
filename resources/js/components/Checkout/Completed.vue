@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{this.props.cart}}
+    {{this.cart}}
   </div>
 </template>
 <script>

@@ -4,10 +4,10 @@
         grid
         grid-cols-4
         gap-2">
-        <div>Item name: {{this.meal.name}}</div>
-        <div>Amount: {{this.meal.amount}}</div>
-        <div>Price per unit: {{this.meal.price}}</div>
-        <div>Total Price: {{this.meal.price * this.meal.amount}}</div>
+        <div class="cartCell">{{this.meal.name}}</div>
+        <div class="cartCell">{{this.meal.amount}}</div>
+        <div class="cartCell">{{this.meal.price}}</div>
+        <div class="cartCell">{{this.meal.price * this.meal.amount}}</div>
       </div>
   </div>
 </template>
