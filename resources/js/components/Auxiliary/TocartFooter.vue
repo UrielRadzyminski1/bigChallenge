@@ -9,9 +9,10 @@
         flex
         justify-between
         items-center
-        px-24">
-        <p>Total: {{this.$store.getters.totalPrice}}</p>
-        <router-link to="/Cart">Cart</router-link>
+        px-16
+        sm:px-24">
+        <router-link to="/categories">Categories</router-link>
+        <router-link to="/Cart">Cart - ${{this.$store.getters.totalPrice}}</router-link>
     </div>
 </template>
 <script>

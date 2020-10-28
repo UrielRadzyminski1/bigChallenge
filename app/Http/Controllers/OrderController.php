@@ -10,11 +10,19 @@ class OrderController extends Controller
 {
     //
     public function store(){
-        request()->validate([
+        
+        $messages = [
+            'required' => 'The :attribute is empty!',
+            'in' => 'The :attribute must be one of the follwoing: :values'
+        ];
 
-        ]);
+        request()->validate([
+            'cart'=>'required',
+            'paymentMethod'=>'required|in:cash'
+        ], $messages);
 
         $cart = request('cart');
+        $responseCart = $cart;
         $totalPrice = 0;
         foreach ($cart as $key => $item) {
             $cart[$key]['price'] = Meal::find($item['id'])->price;

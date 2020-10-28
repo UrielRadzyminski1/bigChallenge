@@ -1924,6 +1924,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1938,6 +1939,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CartItem_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartItem.vue */ "./resources/js/components/Cart/CartItem.vue");
+//
 //
 //
 //
@@ -2007,8 +2009,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['meal']
+  props: ['mealId'],
+  methods: {
+    increaseAmount: function increaseAmount() {
+      this.$store.commit('increaseItem', {
+        'mealId': this.meal.id
+      });
+    },
+    decreaseAmount: function decreaseAmount() {
+      if (this.meal.amount < 2) {
+        if (confirm('Are you sure you want to completely remove this item from your cart?')) {
+          this.$store.commit('removeItem', {
+            'mealId': this.meal.id
+          });
+        }
+      } else {
+        this.$store.commit('decreaseItem', {
+          'mealId': this.meal.id
+        });
+      }
+    }
+  },
+  computed: {
+    meal: function meal() {
+      return this.$store.getters.getMealById(this.mealId);
+    }
+  }
 });
 
 /***/ }),
@@ -2176,7 +2207,8 @@ __webpack_require__.r(__webpack_exports__);
         'amount': this.currentAmount,
         'price': this.meal.price
       });
-      alert("Item added :)");
+      alert("You added " + this.currentAmount + " " + this.meal.name + (this.currentAmount > 1 ? "s" : "") + " to the cart");
+      this.currentAmount = 1;
     }
   },
   computed: {
@@ -2222,20 +2254,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      pMethod: 'cash'
+      pMethod: 'cash',
+      errors: null
     };
   },
   methods: {
+    goToCart: function goToCart() {
+      this.$router.push('/cart');
+    },
     submit: function submit() {
       var _this = this;
 
       var cart = this.$store.state.cart.map(function (item) {
         var newItem = {
           'id': item.id,
-          'amount': item.amount
+          'amount': item.amount,
+          'name': item.name
         };
         return newItem;
       });
@@ -2247,10 +2295,16 @@ __webpack_require__.r(__webpack_exports__);
           'paymentMethod': this.pMethod
         }
       }).then(function (response) {
+        _this.$store.commit('emptyCart');
+
+        console.log(response.data);
+
         _this.$router.push({
           name: 'completed',
           params: response.data
         });
+      })["catch"](function (errorResponse) {
+        _this.errors = errorResponse.response.data.errors;
       });
     }
   }
@@ -2272,8 +2326,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['cart', 'orderId']
+  /*   props:[
+      'cart',
+      'orderId'
+    ] */
+  data: function data() {
+    return {
+      cart: [{
+        "id": 1,
+        "amount": 1,
+        "name": "Burger1",
+        "price": "10.00"
+      }, {
+        "id": 2,
+        "amount": 1,
+        "name": "Burger2",
+        "price": "8.00"
+      }],
+      orderId: 1974
+    };
+  }
 });
 
 /***/ }),
@@ -4069,12 +4160,16 @@ var render = function() {
     "div",
     {
       staticClass:
-        "\n    w-full\n    h-16\n    sm:h-24\n    fixed \n    bottom-0\n    bg-red-500\n    flex\n    justify-between\n    items-center\n    px-24"
+        "\n    w-full\n    h-16\n    sm:h-24\n    fixed \n    bottom-0\n    bg-red-500\n    flex\n    justify-between\n    items-center\n    px-16\n    sm:px-24"
     },
     [
-      _c("p", [_vm._v("Total: " + _vm._s(this.$store.getters.totalPrice))]),
+      _c("router-link", { attrs: { to: "/categories" } }, [
+        _vm._v("Categories")
+      ]),
       _vm._v(" "),
-      _c("router-link", { attrs: { to: "/Cart" } }, [_vm._v("Cart")])
+      _c("router-link", { attrs: { to: "/Cart" } }, [
+        _vm._v("Cart - $" + _vm._s(this.$store.getters.totalPrice))
+      ])
     ],
     1
   )
@@ -4109,7 +4204,7 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _vm._l(_vm.cart, function(item) {
-          return _c("cart-item", { key: item.id, attrs: { meal: item } })
+          return _c("cart-item", { key: item.id, attrs: { mealId: item.id } })
         })
       ],
       2
@@ -4119,10 +4214,12 @@ var render = function() {
       "div",
       {
         staticClass:
-          "\n      w-full\n      md:h-24\n      h-16\n      fixed \n      bottom-0\n      bg-red-500\n      flex\n      justify-between\n      items-center\n      px-24"
+          "\n      w-full\n      sm:h-24\n      h-16\n      fixed \n      bottom-0\n      bg-red-500\n      flex\n      justify-between\n      items-center\n      px-16\n      sm:px-24"
       },
       [
-        _c("p", [_vm._v("Total: " + _vm._s(this.$store.getters.totalPrice))]),
+        _c("router-link", { attrs: { to: "/categories" } }, [
+          _vm._v("Back to categories")
+        ]),
         _vm._v(" "),
         _c("router-link", { attrs: { to: "/checkout" } }, [_vm._v("Checkout")])
       ],
@@ -4137,7 +4234,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "\n      grid\n      grid-cols-4\n      gap-2" },
+      { staticClass: "\n      grid\n      grid-cols-5\n      gap-2" },
       [
         _c("div", { staticClass: "cartCell" }, [_vm._v("Item name")]),
         _vm._v(" "),
@@ -4172,7 +4269,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "\n      grid\n      grid-cols-4\n      gap-2" }, [
+    _c("div", { staticClass: "\n      grid\n      grid-cols-5\n      gap-2" }, [
       _c("div", { staticClass: "cartCell" }, [_vm._v(_vm._s(this.meal.name))]),
       _vm._v(" "),
       _c("div", { staticClass: "cartCell" }, [
@@ -4183,6 +4280,26 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "cartCell" }, [
         _vm._v(_vm._s(this.meal.price * this.meal.amount))
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "cartCell" }, [
+        _c(
+          "span",
+          {
+            staticClass: "cartButton cartButtonPlus",
+            on: { click: _vm.increaseAmount }
+          },
+          [_vm._v("+1")]
+        ),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            staticClass: "cartButton cartButtonMinus",
+            on: { click: _vm.decreaseAmount }
+          },
+          [_vm._v("-1")]
+        )
       ])
     ])
   ])
@@ -4286,7 +4403,7 @@ var render = function() {
               _c(
                 "p",
                 {
-                  staticClass: "cartButton",
+                  staticClass: "cartCategoryButton",
                   on: {
                     click: function($event) {
                       return _vm.incAmount()
@@ -4308,7 +4425,7 @@ var render = function() {
               _c(
                 "p",
                 {
-                  staticClass: "cartButton",
+                  staticClass: "cartCategoryButton",
                   on: {
                     click: function($event) {
                       return _vm.decAmount()
@@ -4359,7 +4476,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "flex flex-col items-center" }, [
     _c("span", [_vm._v("Total: " + _vm._s(this.$store.getters.totalPrice))]),
     _vm._v(" "),
     _c("div", { staticClass: "flex" }, [
@@ -4375,7 +4492,7 @@ var render = function() {
               expression: "pMethod"
             }
           ],
-          attrs: { disabled: "", type: "radio", id: "credit", value: "credit" },
+          attrs: { type: "radio", id: "credit", value: "credit" },
           domProps: { checked: _vm._q(_vm.pMethod, "credit") },
           on: {
             change: function($event) {
@@ -4416,17 +4533,56 @@ var render = function() {
       ? _c("div", [_vm._v("\n      Credit!\n  ")])
       : _vm._e(),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.submit()
+    _c("div", { staticClass: "flex" }, [
+      _c(
+        "button",
+        {
+          staticClass: "mx-4",
+          on: {
+            click: function($event) {
+              return _vm.submit()
+            }
           }
-        }
-      },
-      [_vm._v("Submit :)")]
-    )
+        },
+        [_vm._v("Submit :)")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "mx-4",
+          on: {
+            click: function($event) {
+              return _vm.goToCart()
+            }
+          }
+        },
+        [_vm._v("Back to cart :(")]
+      )
+    ]),
+    _vm._v(" "),
+    _vm.errors
+      ? _c(
+          "div",
+          {
+            staticClass:
+              "bg-red-500 text-white mt-2 py-2 px-4 rounded font-bold mb-4 shadow-lg"
+          },
+          _vm._l(_vm.errors, function(v, k) {
+            return _c(
+              "div",
+              { key: k },
+              _vm._l(v, function(error) {
+                return _c("p", { key: error, staticClass: "text-sm" }, [
+                  _vm._v("\n        " + _vm._s(error) + "\n      ")
+                ])
+              }),
+              0
+            )
+          }),
+          0
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -4451,9 +4607,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n  " + _vm._s(this.cart) + "\n")])
+  return _c(
+    "div",
+    { staticClass: "flex flex-col text-center" },
+    [
+      _c("h2", [_vm._v("Thank you for your order!")]),
+      _vm._v(" "),
+      _c("h2", [_vm._v("Order ID: " + _vm._s(this.orderId))]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(this.cart, function(item) {
+        return _c(
+          "div",
+          { key: item.id, staticClass: "\n  grid \n  gap-2 \n  grid-cols-3" },
+          [
+            _c("div", { staticClass: "cartCell" }, [_vm._v(_vm._s(item.name))]),
+            _vm._v(" "),
+            _c("div", { staticClass: "cartCell" }, [
+              _vm._v(_vm._s(item.amount))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "cartCell" }, [_vm._v(_vm._s(item.price))])
+          ]
+        )
+      })
+    ],
+    2
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "\n  grid \n  gap-2 \n  grid-cols-3" }, [
+      _c("div", { staticClass: "cartCell" }, [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "cartCell" }, [_vm._v("Amount")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "cartCell" }, [_vm._v("Price per unit")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -21826,7 +22022,8 @@ var routes = [{
 }, {
   name: 'completed',
   path: '/completed',
-  component: _components_Checkout_Completed_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+  component: _components_Checkout_Completed_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+  props: true
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
@@ -21847,9 +22044,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
     testingText: "Lorem ipsum dolor sit amet, consectetur \n      adipiscing elit. Donec placerat, enim eu sodales \n      commodo, est augue elementum est, tincidunt iaculis \n      elit est at ante. Donec dolor massa, ultrices quis \n      lacinia ut, porttitor vitae libero. Mauris ultricies \n      enim in felis tempor sollicitudin. Nullam at libero \n      id ex aliquet cursus in nec purus. Nulla nec urna felis. \n      Mauris maximus justo sit amet est semper rhoncus. \n      Morbi maximus egestas posuere. Interdum et malesuada \n      fames ac ante ipsum primis in faucibus. ",
-    cart: []
+    cart: [{
+      "id": 1,
+      "name": "Burger1",
+      "amount": 1,
+      "price": "10.00"
+    }, {
+      "id": 2,
+      "name": "Burger2",
+      "amount": 1,
+      "price": "8.00"
+    }]
   },
   mutations: {
+    emptyCart: function emptyCart(state) {
+      state.cart = [];
+    },
     addItem: function addItem(state, payload) {
       var selectedMeal = state.cart.find(function (orderItem) {
         return orderItem.id == payload.id;
@@ -21860,6 +22070,32 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         selectedMeal.amount += payload.amount;
       }
+    },
+    increaseItem: function increaseItem(state, payload) {
+      for (var i = 0; i < state.cart.length; i++) {
+        if (state.cart[i].id == payload.mealId) {
+          state.cart[i].amount++;
+          break;
+        }
+      }
+    },
+    decreaseItem: function decreaseItem(state, payload) {
+      for (var i = 0; i < state.cart.length; i++) {
+        if (state.cart[i].id == payload.mealId) {
+          state.cart[i].amount--;
+          break;
+        }
+      }
+    },
+    removeItem: function removeItem(state, payload) {
+      payload.mealId;
+
+      for (var i = 0; i < state.cart.length; i++) {
+        if (state.cart[i].id == payload.mealId) {
+          state.cart.splice(i, 1);
+          break;
+        }
+      }
     }
   },
   getters: {
@@ -21869,6 +22105,13 @@ __webpack_require__.r(__webpack_exports__);
         price += item.amount * item.price;
       });
       return price;
+    },
+    getMealById: function getMealById(state) {
+      return function (id) {
+        return state.cart.find(function (meal) {
+          return meal.id == id;
+        });
+      };
     }
   }
 });
@@ -21893,8 +22136,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\idel\Desktop\OTROSPROY\bigChallenge\bigChallenge\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\idel\Desktop\OTROSPROY\bigChallenge\bigChallenge\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/mauriciopisabarro/Desktop/entr/bigChallenge/bigChallenge/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mauriciopisabarro/Desktop/entr/bigChallenge/bigChallenge/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

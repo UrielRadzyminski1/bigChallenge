@@ -31,7 +31,7 @@
             rounded
             shadow
             font-semibold">
-                <p class="cartButton"
+                <p class="cartCategoryButton"
                 @click="incAmount()">
                     +1
                 </p>
@@ -41,7 +41,7 @@
                 pr-4
                 pl-3">{{currentAmount}}</p>
 
-                <p class="cartButton"
+                <p class="cartCategoryButton"
                 @click="decAmount()">
                     -1
                 </p>
@@ -86,7 +86,10 @@ export default {
                 'amount':this.currentAmount,
                 'price':this.meal.price
             });
-            alert("Item added :)")
+            alert("You added "+ this.currentAmount + " " + this.meal.name 
+                + (this.currentAmount>1?"s":"")+" to the cart");
+            this.currentAmount = 1;
+
         }
     },
     computed: {

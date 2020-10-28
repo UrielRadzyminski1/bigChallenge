@@ -29,7 +29,8 @@ let routes = [
   {
     name: 'completed',
     path: '/completed',
-    component: Completed
+    component: Completed,
+    props: true
   },
   
 ];

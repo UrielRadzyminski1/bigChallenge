@@ -39,20 +39,53 @@ h4{
 
 .cartButton{
     @apply
+        py-1
+        px-2
+        select-none
+        rounded-md;
+}
+
+.cartButton:hover{
+    @apply
+        cursor-pointer;
+}
+
+.cartButtonPlus{
+    @apply
+        bg-green-600;
+}
+
+.cartButtonPlus:hover{
+    @apply
+        bg-green-700;
+}
+
+.cartButtonMinus{
+    @apply
+        bg-red-600;
+}
+
+.cartButtonMinus:hover{
+    @apply
+        bg-red-700;
+}
+
+.cartCategoryButton{
+    @apply
         py-2
         pr-4
         pl-3
         select-none;
 }
 
-.cartButton:hover{
+.cartCategoryButton:hover{
     @apply bg-gray-200 cursor-pointer;
 }
 
 .cartCell{
     @apply
         flex
-        justify-center
+        justify-evenly
         items-center
         my-2
         text-center;
