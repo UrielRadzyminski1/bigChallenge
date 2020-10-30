@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Meal;
@@ -50,5 +51,19 @@ class OrderController extends Controller
         ];
         return $response;
 
+    }
+
+    public function deliver(Order $order)
+    {
+        $order->delivered = true;
+        $order->save();
+        return redirect('admin/order');
+    }
+
+    public function pay(Order $order)
+    {
+        $order->paid = true;
+        $order->save();
+        return redirect('admin/order');
     }
 }

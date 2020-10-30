@@ -3,7 +3,14 @@
 
       <div class="px-8">
         <div class="
-        my-4" v-for="meal in meals" 
+        my-4
+        xl:w-1/2
+        lg:6/12
+        md:2/3
+        sm:w-3/4
+        w-11/12
+        
+        m-auto" v-for="meal in meals" 
         v-bind:key="meal.id">
               <category-item 
                 :meal="meal"

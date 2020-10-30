@@ -69,6 +69,7 @@ export default {
           })
         })
         .catch(errorResponse => {
+          console.log(errorResponse.response);
           this.errors=errorResponse.response.data.errors
         })
     }

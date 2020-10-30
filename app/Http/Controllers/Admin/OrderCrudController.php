@@ -24,12 +24,36 @@ class OrderCrudController extends CrudController
      * 
      * @return void
      */
+    protected function setupShowOperation()
+    {
+        // by default the Show operation will try to show all columns in the db table,
+        // but we can easily take over, and have full control of what columns are shown,
+        // by changing this config for the Show operation 
+    
+
+        // example logic
+        $this->crud->addColumn([
+            'label'=>'Meals',
+            'type'=>'mealsInOrder'   
+        ]);
+        // $this->crud->removeColumn('date');
+        // $this->crud->removeColumn('extras');
+
+        // Note: if you HAVEN'T set show.setFromDb to false, the removeColumn() calls won't work
+        // because setFromDb() is called AFTER setupShowOperation(); we know this is not intuitive at all
+        // and we plan to change behaviour in the next version; see this Github issue for more details
+        // https://github.com/Laravel-Backpack/CRUD/issues/3108
+    }
+
     public function setup()
     {
         CRUD::setModel(\App\Models\Order::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/order');
         CRUD::setEntityNameStrings('order', 'orders');
+        $this->crud->addButtonFromView('line', 'deliver', 'deliver', 'beginning');
+        $this->crud->addButtonFromView('line', 'pay', 'pay', 'beginning');
     }
+
 
     /**
      * Define what happens when the List operation is loaded.

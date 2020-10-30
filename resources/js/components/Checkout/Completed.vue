@@ -19,15 +19,25 @@
       <div class="cartCell">{{item.amount}}</div>
       <div class="cartCell">{{item.price}}</div>
     </div>
+    <router-link class="place-self-center" to="/categories" >
+      <h2 class="
+      border 
+      border-black 
+      border-solid 
+      place-self-center 
+      w-auto 
+      p-4
+      mt-8">Back to categories</h2>
+    </router-link>
   </div>
 </template>
 <script>
 export default {
-/*   props:[
+  props:[
     'cart',
     'orderId'
-  ] */
-  data() {
+  ],
+  /* data() {
     return {
       cart:[ 
         { 
@@ -44,8 +54,10 @@ export default {
         }
       ],
       orderId:1974
-    }
+    } */
     
-  }
+  computed: {
+    
+  },
 }
 </script>

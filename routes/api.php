@@ -6,7 +6,7 @@ use App\Http\Resources\Category as CategoryResource;
 use App\Models\Category;
 use App\Http\Resources\Meal as MealResource;
 use App\Models\Meal;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------

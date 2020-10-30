@@ -42,7 +42,7 @@ class Meal extends Model
 
     public function orders()
     {
-        return $this->belongsToMany('App\Models\Order');
+        return $this->belongsToMany('App\Models\Order')->withPivot('price', 'amount');
     }
 
     /*
