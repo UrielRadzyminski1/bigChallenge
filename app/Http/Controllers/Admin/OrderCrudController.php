@@ -52,6 +52,9 @@ class OrderCrudController extends CrudController
         CRUD::setEntityNameStrings('order', 'orders');
         $this->crud->addButtonFromView('line', 'deliver', 'deliver', 'beginning');
         $this->crud->addButtonFromView('line', 'pay', 'pay', 'beginning');
+        $this->crud->addButtonFromView('top', 'deleteDelivered', 'deleteDelivered', 'end');
+        $this->crud->addButtonFromView('top', 'deleteAll', 'deleteAll', 'end');
+        $this->crud->denyAccess('create');
     }
 
 
@@ -120,7 +123,7 @@ class OrderCrudController extends CrudController
         $this->setupCreateOperation();
     }
 
-    protected function setupShowOperation()
+/*     protected function setupShowOperation()
     {
         // by default the Show operation will try to show all columns in the db table,
         // but we can easily take over, and have full control of what columns are shown,
@@ -163,5 +166,5 @@ class OrderCrudController extends CrudController
         // because setFromDb() is called AFTER setupShowOperation(); we know this is not intuitive at all
         // and we plan to change behaviour in the next version; see this Github issue for more details
         // https://github.com/Laravel-Backpack/CRUD/issues/3108
-    }
+    } */
 }

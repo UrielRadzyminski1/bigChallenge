@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Meal;
+use App\Rules\SumsTen;
+
 
 class OrderController extends Controller
 {
@@ -17,10 +19,25 @@ class OrderController extends Controller
             'in' => 'The :attribute must be one of the follwoing: :values'
         ];
 
-        request()->validate([
-            'cart'=>'required',
-            'paymentMethod'=>'required|in:cash'
-        ], $messages);
+        if (request('paymentMethod')=='credit') {
+            request()->validate([
+                'cart'=>['required'],
+                'paymentMethod'=>['required'],
+                'cardNumber'=>'required',
+                'expiration'=>'required',
+                'name'=>'required',
+                'security'=>['required', new SumsTen]
+            ], $messages);
+        } else if (request('paymentMethod')=='cash'){
+            request()->validate([
+                'cart'=>['required'],
+            ], $messages);
+        } else {
+            request()->validate([
+                'paymentMethod'=>'required|in:cash,credit'
+            ], $messages);   
+        }
+        
 
         $cart = request('cart');
         $responseCart = $cart;
@@ -33,7 +50,10 @@ class OrderController extends Controller
         $order = new Order();
         $order->price = $totalPrice;
         $order->delivered = false;
+
         $order->paid=(request('paymentMethod')!='cash');
+
+        
 
         $order->save();
         
@@ -64,6 +84,24 @@ class OrderController extends Controller
     {
         $order->paid = true;
         $order->save();
+        return redirect('admin/order');
+    }
+
+    public function deleteDelivered()
+    {
+        $toDelete = Order::where('delivered', '=', true)->get();
+        foreach ($toDelete as $value) {
+            $value->delete();
+        }
+        return redirect('admin/order');
+    }
+
+    public function deleteAll()
+    {
+        $toDelete = Order::all();
+        foreach ($toDelete as $value) {
+            $value->delete();
+        }
         return redirect('admin/order');
     }
 }

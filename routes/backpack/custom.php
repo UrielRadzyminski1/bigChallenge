@@ -14,6 +14,8 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
+    Route::delete('order/delivered', 'OrderController@deleteDelivered');
+    Route::delete('order/all', 'OrderController@deleteAll');
     Route::crud('category', 'CategoryCrudController');
     Route::crud('meal', 'MealCrudController');
     Route::crud('order', 'OrderCrudController');

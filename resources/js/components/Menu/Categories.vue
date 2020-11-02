@@ -6,27 +6,28 @@
       sm:grid-cols-2
       lg:grid-cols-3
       xl:grid-cols-4">
-      <div class="
-        flex
-        flex-col
-        items-center
-        my-4
-        text-center" v-for="category in categories" 
-        v-bind:key="category.id">
-          <router-link :to="'/categories/'+category.id">
+          <router-link class="showCategoriesItem" v-for="category in categories" 
+        v-bind:key="category.id" :to="'/categories/'+category.id">
             <img 
               class="
                 rounded-2xl
                 border-solid
-                border-8
+                border-4
                 border-red-600
                 hover:border-red-800"
               :src="'/storage/'+category.image" 
               :alt="category.name + ' image'" 
-              width="200" height="200" />
-              <h3>{{category.name}}</h3>
+              width="250" height="250" />
+              <h3 class="
+              categoryImage
+              subpixel-antialiased 
+              mt-4
+              text-2xl 
+              font-black
+              uppercase
+              tracking-widest
+              text-red-900">{{category.name}}</h3>
           </router-link>
-      </div>
     </div>
     <tocart-footer></tocart-footer>
   </div>

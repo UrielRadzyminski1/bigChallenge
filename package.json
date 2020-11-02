@@ -22,6 +22,7 @@
     "dependencies": {
         "es6-promise": "^4.2.8",
         "tailwindcss": "^1.9.5",
+        "v-credit-card": "^1.2.4",
         "vue": "^2.6.12",
         "vue-router": "^3.4.7",
         "vuex": "^3.5.1"

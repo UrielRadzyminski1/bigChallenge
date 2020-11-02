@@ -20,7 +20,6 @@
       </div>
       <h2 class="mt-8">Total: ${{this.$store.getters.totalPrice}}</h2>
 
-
       <div class="
         w-full
         sm:h-24
@@ -31,13 +30,20 @@
         flex
         justify-between
         items-center
-        px-16
+        px-8
         sm:px-24
       text-white
         font-bold
-        tracking-wider">
-        <router-link to="/categories">Back to categories</router-link>
-        <router-link to="/checkout">Checkout</router-link>
+        tracking-wider
+        text-lg">
+        <router-link to="/categories">
+          <i class="fas fa-shopping-basket text-lg mr-2"></i>
+          <span>Back to categories</span> 
+        </router-link>
+        <router-link to="/checkout">
+          <i class="fas fa-cash-register text-lg mr-2"></i>
+          <span>Checkout</span>
+        </router-link>
       </div>
   </div>
 </template>

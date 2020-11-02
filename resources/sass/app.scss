@@ -101,8 +101,34 @@ h4{
         p-4;        
 }
 
-.checkoutCardButton:hover{
+.checkoutCardButtonYes:hover{
     @apply
-        bg-gray-200;
+        bg-green-300;
         
+}
+
+.checkoutCardButtonNo:hover{
+    @apply
+        bg-red-300;
+        
+}
+
+.checkoutText{
+    @apply
+        text-xl
+        tracking-wide;
+}
+
+.showCategoriesItem{
+    @apply
+        flex
+        flex-col
+        items-center
+        py-8
+        text-center;
+}
+
+.showCategoriesItem:hover{
+    @apply
+        bg-red-300;
 }

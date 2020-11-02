@@ -3,20 +3,24 @@
         w-full
         h-16
         sm:h-24
-        fixed 
+        fixed
+        text-lg 
         bottom-0
         bg-red-500
         flex
         justify-between
         items-center
-        px-16
+        px-8
         sm:px-24
         text-white
         font-bold
         tracking-wider">
-        <router-link to="/categories">Categories</router-link>
+        <router-link  to="/categories">
+            <i class="fas fa-shopping-basket text-lg mr-2"></i>
+            <span>Categories</span> 
+        </router-link>
         <router-link to="/Cart" class="flex items-center">
-            <img class="w-6 h-6 mr-4" src="https://www.flaticon.com/svg/static/icons/svg/1170/1170678.svg" alt="cart"> 
+            <i class="fas fa-shopping-cart text-lg mx-2"></i>
             <span>${{this.$store.getters.totalPrice}}</span>
         </router-link>
     </div>
