@@ -1,7 +1,12 @@
 <template>
-  <div class="">
+  <div class="flex flex-col items-center">
       <div class="
-      divide-y">
+      divide-y
+      w-11/12
+      sm:w-3/4
+      md:2/3
+      lg:w-1/2
+      text-lg">
         <div class="
         grid
         grid-cols-5
@@ -13,6 +18,7 @@
         </div>
         <cart-item v-for="item in cart" :key="item.id" :mealId="item.id"></cart-item>
       </div>
+      <h2 class="mt-8">Total: ${{this.$store.getters.totalPrice}}</h2>
 
 
       <div class="
@@ -26,7 +32,10 @@
         justify-between
         items-center
         px-16
-        sm:px-24">
+        sm:px-24
+      text-white
+        font-bold
+        tracking-wider">
         <router-link to="/categories">Back to categories</router-link>
         <router-link to="/checkout">Checkout</router-link>
       </div>

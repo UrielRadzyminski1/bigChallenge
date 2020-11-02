@@ -29,7 +29,7 @@ class MealRequest extends FormRequest
             'name' => 'required',
             'description' => 'required',
             'category_id' => 'required',
-            'price' => 'required|numeric|digits_between:1,19'
+            'price' => 'required|numeric|lt:1000000000'
         ];
     }
 

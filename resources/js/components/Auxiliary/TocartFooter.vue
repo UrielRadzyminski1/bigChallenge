@@ -10,7 +10,10 @@
         justify-between
         items-center
         px-16
-        sm:px-24">
+        sm:px-24
+        text-white
+        font-bold
+        tracking-wider">
         <router-link to="/categories">Categories</router-link>
         <router-link to="/Cart">Cart - ${{this.$store.getters.totalPrice}}</router-link>
     </div>

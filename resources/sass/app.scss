@@ -40,7 +40,7 @@ h4{
 .cartButton{
     @apply
         py-1
-        px-2
+        w-10
         select-none
         rounded-md;
 }
@@ -89,4 +89,20 @@ h4{
         items-center
         my-2
         text-center;
+}
+
+#checkoutCard > *{
+    @apply
+        my-6;
+}
+
+.checkoutCardButton{
+    @apply
+        p-4;        
+}
+
+.checkoutCardButton:hover{
+    @apply
+        bg-gray-200;
+        
 }

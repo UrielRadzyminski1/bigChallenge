@@ -1,9 +1,14 @@
 <template>
   <div>
 
-      <div class="px-8">
+      <div class="flex flex-col items-center">
         <div class="
-        my-4" v-for="meal in meals" 
+        my-4
+        w-11/12
+        sm:w-3/4
+        md:2/3
+        lg:w-1/2
+        " v-for="meal in meals" 
         v-bind:key="meal.id">
               <category-item 
                 :meal="meal"
