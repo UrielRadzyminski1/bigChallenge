@@ -41,11 +41,11 @@
 </template>
 <script>
 export default {
-/*   props:[
+  props:[
     'cart',
     'orderId'
-  ] */
-  data() {
+  ],
+  /* data() {
     return {
       cart:[ 
         { 
@@ -62,8 +62,10 @@ export default {
         }
       ],
       orderId:1974
-    }
+    } */
     
-  }
+  computed: {
+    
+  },
 }
 </script>

@@ -17,4 +17,6 @@ Route::group([
     Route::crud('category', 'CategoryCrudController');
     Route::crud('meal', 'MealCrudController');
     Route::crud('order', 'OrderCrudController');
+    Route::post('order/{order}/deliver', 'OrderController@deliver');
+    Route::post('order/{order}/pay', 'OrderController@pay');
 }); // this should be the absolute last line of this file

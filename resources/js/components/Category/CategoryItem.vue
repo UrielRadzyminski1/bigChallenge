@@ -1,7 +1,7 @@
 <template>
     <div 
     class="flex 
-    flex-col 
+    flex-col
     shadow-md
     divide-y-2 divide-red-200"> 
         <div class="

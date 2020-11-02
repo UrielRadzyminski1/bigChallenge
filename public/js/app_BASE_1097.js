@@ -1925,9 +1925,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1942,15 +1939,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CartItem_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartItem.vue */ "./resources/js/components/Cart/CartItem.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2074,11 +2062,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2282,21 +2265,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2336,7 +2304,6 @@ __webpack_require__.r(__webpack_exports__);
           params: response.data
         });
       })["catch"](function (errorResponse) {
-        console.log(errorResponse.response);
         _this.errors = errorResponse.response.data.errors;
       });
     }
@@ -2377,38 +2344,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['cart', 'orderId'],
-
-  /* data() {
+  /*   props:[
+      'cart',
+      'orderId'
+    ] */
+  data: function data() {
     return {
-      cart:[ 
-        { 
-          "id": 1,
-          "amount": 1,
-          "name": "Burger1",
-          "price": "10.00"
-        }, 
-        { 
-          "id": 2,
-          "amount": 1,
-          "name": "Burger2",
-          "price": "8.00"
-        }
-      ],
-      orderId:1974
-    } */
-  computed: {}
+      cart: [{
+        "id": 1,
+        "amount": 1,
+        "name": "Burger1",
+        "price": "10.00"
+      }, {
+        "id": 2,
+        "amount": 1,
+        "name": "Burger2",
+        "price": "8.00"
+      }],
+      orderId: 1974
+    };
+  }
 });
 
 /***/ }),
@@ -4204,29 +4160,16 @@ var render = function() {
     "div",
     {
       staticClass:
-        "\n    w-full\n    h-16\n    sm:h-24\n    fixed \n    bottom-0\n    bg-red-500\n    flex\n    justify-between\n    items-center\n    px-16\n    sm:px-24\n    text-white\n    font-bold\n    tracking-wider"
+        "\n    w-full\n    h-16\n    sm:h-24\n    fixed \n    bottom-0\n    bg-red-500\n    flex\n    justify-between\n    items-center\n    px-16\n    sm:px-24"
     },
     [
       _c("router-link", { attrs: { to: "/categories" } }, [
         _vm._v("Categories")
       ]),
       _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "flex items-center", attrs: { to: "/Cart" } },
-        [
-          _c("img", {
-            staticClass: "w-6 h-6 mr-4",
-            attrs: {
-              src:
-                "https://www.flaticon.com/svg/static/icons/svg/1170/1170678.svg",
-              alt: "cart"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", [_vm._v("$" + _vm._s(this.$store.getters.totalPrice))])
-        ]
-      )
+      _c("router-link", { attrs: { to: "/Cart" } }, [
+        _vm._v("Cart - $" + _vm._s(this.$store.getters.totalPrice))
+      ])
     ],
     1
   )
@@ -4253,13 +4196,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "flex flex-col items-center" }, [
+  return _c("div", {}, [
     _c(
       "div",
-      {
-        staticClass:
-          "\n    divide-y\n    w-11/12\n    sm:w-3/4\n    md:2/3\n    lg:w-1/2\n    text-lg"
-      },
+      { staticClass: "\n    divide-y" },
       [
         _vm._m(0),
         _vm._v(" "),
@@ -4270,15 +4210,11 @@ var render = function() {
       2
     ),
     _vm._v(" "),
-    _c("h2", { staticClass: "mt-8" }, [
-      _vm._v("Total: $" + _vm._s(this.$store.getters.totalPrice))
-    ]),
-    _vm._v(" "),
     _c(
       "div",
       {
         staticClass:
-          "\n      w-full\n      sm:h-24\n      h-16\n      fixed \n      bottom-0\n      bg-red-500\n      flex\n      justify-between\n      items-center\n      px-16\n      sm:px-24\n    text-white\n      font-bold\n      tracking-wider"
+          "\n      w-full\n      sm:h-24\n      h-16\n      fixed \n      bottom-0\n      bg-red-500\n      flex\n      justify-between\n      items-center\n      px-16\n      sm:px-24"
       },
       [
         _c("router-link", { attrs: { to: "/categories" } }, [
@@ -4395,15 +4331,11 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "flex flex-col items-center" },
+        { staticClass: "px-8" },
         _vm._l(_vm.meals, function(meal) {
           return _c(
             "div",
-            {
-              key: meal.id,
-              staticClass:
-                "\n      my-4\n      xl:w-1/2\n      lg:6/12\n      md:2/3\n      sm:w-3/4\n      w-11/12\n      \n      m-auto"
-            },
+            { key: meal.id, staticClass: "\n      my-4" },
             [_c("category-item", { attrs: { meal: meal } })],
             1
           )
@@ -4440,7 +4372,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "flex \nflex-col\nshadow-md\ndivide-y-2 divide-red-200" },
+    { staticClass: "flex \nflex-col \nshadow-md\ndivide-y-2 divide-red-200" },
     [
       _c(
         "div",
@@ -4545,110 +4477,89 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex flex-col items-center" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "\n  flex \n  flex-col \n  items-center\n  border-4\n  rounded\n  text-lg\n  bg-white\n  border-gray-800\n  text-gray-800\n  px-8\n  pt-4\n  pb-6",
-        attrs: { id: "checkoutCard" }
-      },
-      [
-        _c("h2", [_vm._v("Total: $" + _vm._s(this.$store.getters.totalPrice))]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex" }, [
-          _c("p", { staticClass: "mr-4" }, [_vm._v("Payment method:")]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "div",
-              {
-                attrs: { title: "Sorry, we are currently only accepting cash" }
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.pMethod,
-                      expression: "pMethod"
-                    }
-                  ],
-                  attrs: {
-                    disabled: "",
-                    type: "radio",
-                    id: "credit",
-                    value: "credit"
-                  },
-                  domProps: { checked: _vm._q(_vm.pMethod, "credit") },
-                  on: {
-                    change: function($event) {
-                      _vm.pMethod = "credit"
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "credit" } }, [
-                  _vm._v("Credit Card")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.pMethod,
-                  expression: "pMethod"
-                }
-              ],
-              attrs: { type: "radio", id: "cash", value: "cash" },
-              domProps: { checked: _vm._q(_vm.pMethod, "cash") },
-              on: {
-                change: function($event) {
-                  _vm.pMethod = "cash"
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "cash" } }, [_vm._v("Cash")]),
-            _vm._v(" "),
-            _c("br")
-          ])
-        ]),
-        _vm._v(" "),
-        _vm.pMethod == "credit"
-          ? _c("div", [_vm._v("\n        Credit!\n    ")])
-          : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "flex" },
-          [
-            _c("router-link", { attrs: { to: "/cart" } }, [
-              _c("button", { staticClass: "checkoutCardButton" }, [
-                _vm._v("Back to cart :(")
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "checkoutCardButton",
-                on: {
-                  click: function($event) {
-                    return _vm.submit()
-                  }
-                }
-              },
-              [_vm._v("Submit :)")]
-            )
+    _c("span", [_vm._v("Total: " + _vm._s(this.$store.getters.totalPrice))]),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex" }, [
+      _c("p", { staticClass: "mr-4" }, [_vm._v("Payment method:")]),
+      _vm._v(" "),
+      _c("div", [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.pMethod,
+              expression: "pMethod"
+            }
           ],
-          1
-        )
-      ]
-    ),
+          attrs: { type: "radio", id: "credit", value: "credit" },
+          domProps: { checked: _vm._q(_vm.pMethod, "credit") },
+          on: {
+            change: function($event) {
+              _vm.pMethod = "credit"
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "credit" } }, [_vm._v("Credit Card")]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.pMethod,
+              expression: "pMethod"
+            }
+          ],
+          attrs: { type: "radio", id: "cash", value: "cash" },
+          domProps: { checked: _vm._q(_vm.pMethod, "cash") },
+          on: {
+            change: function($event) {
+              _vm.pMethod = "cash"
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "cash" } }, [_vm._v("Cash")]),
+        _vm._v(" "),
+        _c("br")
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.pMethod == "credit"
+      ? _c("div", [_vm._v("\n      Credit!\n  ")])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex" }, [
+      _c(
+        "button",
+        {
+          staticClass: "mx-4",
+          on: {
+            click: function($event) {
+              return _vm.submit()
+            }
+          }
+        },
+        [_vm._v("Submit :)")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "mx-4",
+          on: {
+            click: function($event) {
+              return _vm.goToCart()
+            }
+          }
+        },
+        [_vm._v("Back to cart :(")]
+      )
+    ]),
     _vm._v(" "),
     _vm.errors
       ? _c(
@@ -4663,7 +4574,7 @@ var render = function() {
               { key: k },
               _vm._l(v, function(error) {
                 return _c("p", { key: error, staticClass: "text-sm" }, [
-                  _vm._v("\n          " + _vm._s(error) + "\n        ")
+                  _vm._v("\n        " + _vm._s(error) + "\n      ")
                 ])
               }),
               0
@@ -4704,48 +4615,25 @@ var render = function() {
       _vm._v(" "),
       _c("h2", [_vm._v("Order ID: " + _vm._s(this.orderId))]),
       _vm._v(" "),
-      _c(
-        "div",
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._l(this.cart, function(item) {
-            return _c(
-              "div",
-              {
-                key: item.id,
-                staticClass: "\n    grid \n    gap-2 \n    grid-cols-3"
-              },
-              [
-                _c("div", { staticClass: "cartCell" }, [
-                  _vm._v(_vm._s(item.name))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "cartCell" }, [
-                  _vm._v(_vm._s(item.amount))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "cartCell" }, [
-                  _vm._v(_vm._s(item.price))
-                ])
-              ]
-            )
-          })
-        ],
-        2
-      ),
+      _vm._m(0),
       _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          staticClass:
-            "\n    w-40\n    mt-10\n    py-1\n    px-4\n    border-4\n    border-solid\n    border-black\n    rounded-xl\n    hover:bg-red-200\n    place-self-center\n    ",
-          attrs: { to: "/categories" }
-        },
-        [_c("h2", [_vm._v("Back")])]
-      )
+      _vm._l(this.cart, function(item) {
+        return _c(
+          "div",
+          { key: item.id, staticClass: "\n  grid \n  gap-2 \n  grid-cols-3" },
+          [
+            _c("div", { staticClass: "cartCell" }, [_vm._v(_vm._s(item.name))]),
+            _vm._v(" "),
+            _c("div", { staticClass: "cartCell" }, [
+              _vm._v(_vm._s(item.amount))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "cartCell" }, [_vm._v(_vm._s(item.price))])
+          ]
+        )
+      })
     ],
-    1
+    2
   )
 }
 var staticRenderFns = [
@@ -4753,17 +4641,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "\n    grid \n    gap-2 \n    grid-cols-3" },
-      [
-        _c("div", { staticClass: "cartCell" }, [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "cartCell" }, [_vm._v("Amount")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "cartCell" }, [_vm._v("Price per unit")])
-      ]
-    )
+    return _c("div", { staticClass: "\n  grid \n  gap-2 \n  grid-cols-3" }, [
+      _c("div", { staticClass: "cartCell" }, [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "cartCell" }, [_vm._v("Amount")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "cartCell" }, [_vm._v("Price per unit")])
+    ])
   }
 ]
 render._withStripped = true
@@ -21841,15 +21725,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************************!*\
   !*** ./resources/js/components/Checkout/Completed.vue ***!
   \********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Completed_vue_vue_type_template_id_4301914d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Completed.vue?vue&type=template&id=4301914d& */ "./resources/js/components/Checkout/Completed.vue?vue&type=template&id=4301914d&");
 /* harmony import */ var _Completed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Completed.vue?vue&type=script&lang=js& */ "./resources/js/components/Checkout/Completed.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Completed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Completed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -21879,7 +21762,7 @@ component.options.__file = "resources/js/components/Checkout/Completed.vue"
 /*!*********************************************************************************!*\
   !*** ./resources/js/components/Checkout/Completed.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22160,7 +22043,18 @@ var routes = [{
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
-    cart: []
+    testingText: "Lorem ipsum dolor sit amet, consectetur \n      adipiscing elit. Donec placerat, enim eu sodales \n      commodo, est augue elementum est, tincidunt iaculis \n      elit est at ante. Donec dolor massa, ultrices quis \n      lacinia ut, porttitor vitae libero. Mauris ultricies \n      enim in felis tempor sollicitudin. Nullam at libero \n      id ex aliquet cursus in nec purus. Nulla nec urna felis. \n      Mauris maximus justo sit amet est semper rhoncus. \n      Morbi maximus egestas posuere. Interdum et malesuada \n      fames ac ante ipsum primis in faucibus. ",
+    cart: [{
+      "id": 1,
+      "name": "Burger1",
+      "amount": 1,
+      "price": "10.00"
+    }, {
+      "id": 2,
+      "name": "Burger2",
+      "amount": 1,
+      "price": "8.00"
+    }]
   },
   mutations: {
     emptyCart: function emptyCart(state) {
@@ -22242,8 +22136,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\idel\Desktop\OTROSPROY\bigChallenge\bigChallenge\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\idel\Desktop\OTROSPROY\bigChallenge\bigChallenge\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/mauriciopisabarro/Desktop/entr/bigChallenge/bigChallenge/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mauriciopisabarro/Desktop/entr/bigChallenge/bigChallenge/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

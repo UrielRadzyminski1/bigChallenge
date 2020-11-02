@@ -4,11 +4,13 @@
       <div class="flex flex-col items-center">
         <div class="
         my-4
-        w-11/12
-        sm:w-3/4
+        xl:w-1/2
+        lg:6/12
         md:2/3
-        lg:w-1/2
-        " v-for="meal in meals" 
+        sm:w-3/4
+        w-11/12
+        
+        m-auto" v-for="meal in meals" 
         v-bind:key="meal.id">
               <category-item 
                 :meal="meal"

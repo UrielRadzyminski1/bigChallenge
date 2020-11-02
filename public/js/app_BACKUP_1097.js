@@ -2097,6 +2097,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+>>>>>>> d9abe40143c5f7968dc1fed5597a3117d6256c52
 
 
 
@@ -2387,6 +2392,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
+//
+//
+//
+//
+//
+//
+//
+//
+=======
+>>>>>>> d9abe40143c5f7968dc1fed5597a3117d6256c52
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['cart', 'orderId'],
 
@@ -4402,7 +4418,11 @@ var render = function() {
             {
               key: meal.id,
               staticClass:
+<<<<<<< HEAD
+                "\n      my-4\n      w-11/12\n      sm:w-3/4\n      md:2/3\n      lg:w-1/2\n      "
+=======
                 "\n      my-4\n      xl:w-1/2\n      lg:6/12\n      md:2/3\n      sm:w-3/4\n      w-11/12\n      \n      m-auto"
+>>>>>>> d9abe40143c5f7968dc1fed5597a3117d6256c52
             },
             [_c("category-item", { attrs: { meal: meal } })],
             1
@@ -4735,6 +4755,7 @@ var render = function() {
         2
       ),
       _vm._v(" "),
+<<<<<<< HEAD
       _c(
         "router-link",
         {
@@ -4743,6 +4764,37 @@ var render = function() {
           attrs: { to: "/categories" }
         },
         [_c("h2", [_vm._v("Back")])]
+=======
+      _vm._l(this.cart, function(item) {
+        return _c(
+          "div",
+          { key: item.id, staticClass: "\n  grid \n  gap-2 \n  grid-cols-3" },
+          [
+            _c("div", { staticClass: "cartCell" }, [_vm._v(_vm._s(item.name))]),
+            _vm._v(" "),
+            _c("div", { staticClass: "cartCell" }, [
+              _vm._v(_vm._s(item.amount))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "cartCell" }, [_vm._v(_vm._s(item.price))])
+          ]
+        )
+      }),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        { staticClass: "place-self-center", attrs: { to: "/categories" } },
+        [
+          _c(
+            "h2",
+            {
+              staticClass:
+                "\n    border \n    border-black \n    border-solid \n    place-self-center \n    w-auto \n    p-4\n    mt-8"
+            },
+            [_vm._v("Back to categories")]
+          )
+        ]
+>>>>>>> d9abe40143c5f7968dc1fed5597a3117d6256c52
       )
     ],
     1

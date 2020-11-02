@@ -1,30 +1,7 @@
 export default {
 
   state: {
-    testingText: `Lorem ipsum dolor sit amet, consectetur 
-      adipiscing elit. Donec placerat, enim eu sodales 
-      commodo, est augue elementum est, tincidunt iaculis 
-      elit est at ante. Donec dolor massa, ultrices quis 
-      lacinia ut, porttitor vitae libero. Mauris ultricies 
-      enim in felis tempor sollicitudin. Nullam at libero 
-      id ex aliquet cursus in nec purus. Nulla nec urna felis. 
-      Mauris maximus justo sit amet est semper rhoncus. 
-      Morbi maximus egestas posuere. Interdum et malesuada 
-      fames ac ante ipsum primis in faucibus. `,
-      cart:[
-        {
-          "id":1,
-          "name":"Burger1",
-          "amount":1,
-          "price":"10.00"
-        },
-        {
-          "id":2,
-          "name":"Burger2",
-          "amount":1,
-          "price":"8.00"
-        }
-      ],
+      cart:[],
   },
   mutations:{
     emptyCart(state){

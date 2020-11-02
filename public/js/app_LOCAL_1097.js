@@ -2336,7 +2336,6 @@ __webpack_require__.r(__webpack_exports__);
           params: response.data
         });
       })["catch"](function (errorResponse) {
-        console.log(errorResponse.response);
         _this.errors = errorResponse.response.data.errors;
       });
     }
@@ -2387,28 +2386,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['cart', 'orderId'],
-
-  /* data() {
+  /*   props:[
+      'cart',
+      'orderId'
+    ] */
+  data: function data() {
     return {
-      cart:[ 
-        { 
-          "id": 1,
-          "amount": 1,
-          "name": "Burger1",
-          "price": "10.00"
-        }, 
-        { 
-          "id": 2,
-          "amount": 1,
-          "name": "Burger2",
-          "price": "8.00"
-        }
-      ],
-      orderId:1974
-    } */
-  computed: {}
+      cart: [{
+        "id": 1,
+        "amount": 1,
+        "name": "Burger1",
+        "price": "10.00"
+      }, {
+        "id": 2,
+        "amount": 1,
+        "name": "Burger2",
+        "price": "8.00"
+      }],
+      orderId: 1974
+    };
+  }
 });
 
 /***/ }),
@@ -4211,22 +4217,9 @@ var render = function() {
         _vm._v("Categories")
       ]),
       _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "flex items-center", attrs: { to: "/Cart" } },
-        [
-          _c("img", {
-            staticClass: "w-6 h-6 mr-4",
-            attrs: {
-              src:
-                "https://www.flaticon.com/svg/static/icons/svg/1170/1170678.svg",
-              alt: "cart"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", [_vm._v("$" + _vm._s(this.$store.getters.totalPrice))])
-        ]
-      )
+      _c("router-link", { attrs: { to: "/Cart" } }, [
+        _vm._v("Cart - $" + _vm._s(this.$store.getters.totalPrice))
+      ])
     ],
     1
   )
@@ -4402,7 +4395,7 @@ var render = function() {
             {
               key: meal.id,
               staticClass:
-                "\n      my-4\n      xl:w-1/2\n      lg:6/12\n      md:2/3\n      sm:w-3/4\n      w-11/12\n      \n      m-auto"
+                "\n      my-4\n      w-11/12\n      sm:w-3/4\n      md:2/3\n      lg:w-1/2\n      "
             },
             [_c("category-item", { attrs: { meal: meal } })],
             1
@@ -4440,7 +4433,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "flex \nflex-col\nshadow-md\ndivide-y-2 divide-red-200" },
+    { staticClass: "flex \nflex-col \nshadow-md\ndivide-y-2 divide-red-200" },
     [
       _c(
         "div",
@@ -21841,15 +21834,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************************!*\
   !*** ./resources/js/components/Checkout/Completed.vue ***!
   \********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Completed_vue_vue_type_template_id_4301914d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Completed.vue?vue&type=template&id=4301914d& */ "./resources/js/components/Checkout/Completed.vue?vue&type=template&id=4301914d&");
 /* harmony import */ var _Completed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Completed.vue?vue&type=script&lang=js& */ "./resources/js/components/Checkout/Completed.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Completed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Completed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -21879,7 +21871,7 @@ component.options.__file = "resources/js/components/Checkout/Completed.vue"
 /*!*********************************************************************************!*\
   !*** ./resources/js/components/Checkout/Completed.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22160,7 +22152,18 @@ var routes = [{
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
-    cart: []
+    testingText: "Lorem ipsum dolor sit amet, consectetur \n      adipiscing elit. Donec placerat, enim eu sodales \n      commodo, est augue elementum est, tincidunt iaculis \n      elit est at ante. Donec dolor massa, ultrices quis \n      lacinia ut, porttitor vitae libero. Mauris ultricies \n      enim in felis tempor sollicitudin. Nullam at libero \n      id ex aliquet cursus in nec purus. Nulla nec urna felis. \n      Mauris maximus justo sit amet est semper rhoncus. \n      Morbi maximus egestas posuere. Interdum et malesuada \n      fames ac ante ipsum primis in faucibus. ",
+    cart: [{
+      "id": 1,
+      "name": "Burger1",
+      "amount": 1,
+      "price": "10.00"
+    }, {
+      "id": 2,
+      "name": "Burger2",
+      "amount": 1,
+      "price": "8.00"
+    }]
   },
   mutations: {
     emptyCart: function emptyCart(state) {
