@@ -1,5 +1,5 @@
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('dashboard') }}"><i class="la la-home nav-icon"></i> {{ trans('backpack::base.dashboard') }}</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('category') }}'><i class='nav-icon la la-question'></i> Categories</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('meal') }}'><i class='nav-icon la la-question'></i> Meals</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('order') }}'><i class='nav-icon la la-question'></i> Orders</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('category') }}'><i class='nav-icon las la-boxes'></i> Categories</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('meal') }}'><i class='nav-icon las la-hamburger'></i> Meals</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('order') }}'><i class='nav-icon las la-money-check'></i> Orders</a></li>

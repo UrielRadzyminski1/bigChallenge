@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\MealRequest;
+use App\Models\Category;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -39,7 +40,29 @@ class MealCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->addColumn([
+            'name' => 'category', // The db column name
+            'label' => "Category Name", // Table column heading
+            'type' => 'relationship',
+            'attribute' => 'name',
+          ]);
         CRUD::setFromDb(); // columns
+        
+        $categories = Category::select('id','name')->get()->toArray();
+        $values = [];
+        foreach ($categories as $category) {
+            $values[$category["id"]] = $category["name"];
+        }
+
+        $this->crud->addFilter([
+            'name'  => 'category',
+            'type'  => 'dropdown',
+            'label' => 'Category'
+          ], 
+            $values,
+          function($value) { // if the filter is active
+            $this->crud->addClause('where', 'category_id', $value);
+          });
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:

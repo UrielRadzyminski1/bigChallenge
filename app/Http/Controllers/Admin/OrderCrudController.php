@@ -67,7 +67,15 @@ class OrderCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::setFromDb(); // columns
-
+        $this->crud->addFilter([
+            'type'  => 'simple',
+            'name'  => 'paid',
+            'label' => 'Show only paid orders'
+          ], 
+          false, 
+          function() { // if the filter is active
+            $this->crud->addClause('where', 'paid', true); // apply the "active" eloquent scope 
+          } );
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
