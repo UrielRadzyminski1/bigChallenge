@@ -55,6 +55,7 @@ class OrderCrudController extends CrudController
         $this->crud->addButtonFromView('top', 'deleteDelivered', 'deleteDelivered', 'end');
         $this->crud->addButtonFromView('top', 'deleteAll', 'deleteAll', 'end');
         $this->crud->denyAccess('create');
+        $this->crud->enableExportButtons();
     }
 
 
@@ -66,7 +67,13 @@ class OrderCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::addColumn([
+            'name'  => 'id', // The db column name
+            'label' => 'Order Id', // Table column heading
+            'type'  => 'number',
+         ],);
         CRUD::setFromDb(); // columns
+        
         $this->crud->addFilter([
             'type'  => 'simple',
             'name'  => 'paid',

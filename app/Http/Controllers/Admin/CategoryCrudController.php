@@ -29,7 +29,40 @@ class CategoryCrudController extends CrudController
         CRUD::setModel(\App\Models\Category::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/category');
         CRUD::setEntityNameStrings('category', 'categories');
+        $this->crud->enableExportButtons();
     }
+
+
+    protected function setupShowOperation()
+    {
+        // by default the Show operation will try to show all columns in the db table,
+        // but we can easily take over, and have full control of what columns are shown,
+        // by changing this config for the Show operation 
+        /* $this->crud->set('show.setFromDb', false); */
+
+        // example logic
+        CRUD::setFromDb(); // columns
+        $this->crud->removeColumn('image');
+        CRUD::addColumn([
+            'label' => "Category Image",
+            'name' => "image",
+            'type' => 'image',
+            'disk' => 'public',
+            'height' => '200px',
+            'width'  => '200px',
+          ]);
+        // $this->crud->removeColumn('date');
+        // $this->crud->removeColumn('extras');
+
+        // Note: if you HAVEN'T set show.setFromDb to false, the removeColumn() calls won't work
+        // because setFromDb() is called AFTER setupShowOperation(); we know this is not intuitive at all
+        // and we plan to change behaviour in the next version; see this Github issue for more details
+        // https://github.com/Laravel-Backpack/CRUD/issues/3108
+    }
+
+
+
+
 
     /**
      * Define what happens when the List operation is loaded.
@@ -40,7 +73,15 @@ class CategoryCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::setFromDb(); // columns
-
+        $this->crud->removeColumn('image');
+        CRUD::addColumn([
+            'label' => "Category Image",
+            'name' => "image",
+            'type' => 'image',
+            'disk' => 'public',
+            'height' => '30px',
+            'width'  => '30px',
+          ]);
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
