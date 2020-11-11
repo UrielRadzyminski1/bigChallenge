@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Http\Resources\Meal as MealResource;
 use App\Models\Meal;
 use App\Http\Controllers\Admin\OrderController;
-
+use App\Http\Controllers\StoreOrderController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,4 +31,4 @@ Route::get('categories', function () {
     return CategoryResource::collection(Category::all());
 });
 
-Route::post('order/create', [OrderController::class, 'store']);
+Route::post('order/create', StoreOrderController::class);
